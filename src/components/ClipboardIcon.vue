@@ -3,7 +3,9 @@
     size?: number;
   }
 
-  const { size = 24 } = defineProps<ClipboardIconProps>();
+  const { size } = withDefaults(defineProps<ClipboardIconProps>(), {
+    size: 24,
+  });
 </script>
 
 <template>

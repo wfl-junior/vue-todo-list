@@ -4,7 +4,10 @@
     height?: number;
   }
 
-  const { width = 126, height = 48 } = defineProps<LogoProps>();
+  const { width, height } = withDefaults(defineProps<LogoProps>(), {
+    width: 126,
+    height: 48,
+  });
 </script>
 
 <template>

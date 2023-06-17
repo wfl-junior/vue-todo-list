@@ -20,6 +20,9 @@
     class="flex flex-col min-h-screen bg-app-gray-600 text-app-gray-100 font-sans"
   >
     <Header />
-    <slot />
+
+    <main class="flex flex-col flex-1 pb-5 sm:pb-7">
+      <slot />
+    </main>
   </div>
 </template>

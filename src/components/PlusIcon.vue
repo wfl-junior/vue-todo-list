@@ -3,7 +3,9 @@
     size?: number;
   }
 
-  const { size = 24 } = defineProps<PlusIconProps>();
+  const { size = 24 } = withDefaults(defineProps<PlusIconProps>(), {
+    size: 24,
+  });
 </script>
 
 <template>

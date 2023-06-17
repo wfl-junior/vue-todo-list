@@ -1,3 +1,8 @@
 <template>
-  <h1 class="text-4xl font-bold text-center">Home</h1>
+  <div class="px-2.5">
+    <div class="max-w-3xl mx-auto w-full flex flex-col gap-16">
+      <CreateTodoForm />
+      <Todos />
+    </div>
+  </div>
 </template>
