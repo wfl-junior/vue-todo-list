@@ -4,14 +4,10 @@ import { errorHandler } from "~/server/utils/errorHandler";
 export default defineEventHandler(async event => {
   try {
     const id = event.context.params!.id;
-    let todo = await prisma.todo.findUniqueOrThrow({
-      where: { id },
-    });
-
-    todo = await prisma.todo.update({
+    const todo = await prisma.todo.update({
       where: { id },
       data: {
-        isCompleted: todo.isCompleted,
+        isCompleted: true,
       },
     });
 

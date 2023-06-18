@@ -5,20 +5,25 @@
   const todos = useTodos();
   let abortController = new AbortController();
 
-  async function handleToggleTodo(index: number, id: Todo["id"]) {
+  function handleToggleTodo(index: number, id: Todo["id"]) {
     abortController.abort();
     abortController = new AbortController();
+
     const todo = todos.value[index];
     todo.isCompleted = !todo.isCompleted;
 
+    let url = `/todos/${id}/complete`;
+
+    if (!todo.isCompleted) {
+      url += "/undo";
+    }
+
     api
-      .patch(`/todos/${id}/toggle-completed`, undefined, {
-        signal: abortController.signal,
-      })
+      .patch(url, undefined, { signal: abortController.signal })
       .catch(console.error);
   }
 
-  async function handleDeleteTodo(index: number, id: Todo["id"]) {
+  function handleDeleteTodo(index: number, id: Todo["id"]) {
     todos.value.splice(index, 1);
     api.delete(`/todos/${id}`).catch(console.error);
   }
